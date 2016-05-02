@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{47232F73-385B-43D6-8751-10B289DAEBE1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ChocolateARM</RootNamespace>
+    <AssemblyName>ChocolateARM</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ARM11\ARMCore.cs" />
+    <Compile Include="ARM11\ARM\AddressingModes\DataProcessing.cs" />
+    <Compile Include="ARM11\ARM\AddressingModes\LoadAndStore.cs" />
+    <Compile Include="ARM11\ARM\Instructions\ARM\Arithmetic\Addition.cs" />
+    <Compile Include="ARM11\ARM\Instructions\ARM\Arithmetic\Multiplication.cs" />
+    <Compile Include="ARM11\ARM\Instructions\ARM\Arithmetic\Saturation.cs" />
+    <Compile Include="ARM11\ARM\Instructions\ARM\Arithmetic\Subtraction.cs" />
+    <Compile Include="ARM11\ARM\Instructions\ARM\Branch.cs" />
+    <Compile Include="ARM11\ARM\Instructions\ARM\Compare.cs" />
+    <Compile Include="ARM11\ARM\Instructions\ARM\Coprocessor.cs" />
+    <Compile Include="ARM11\ARM\Instructions\ARM\Exception.cs" />
+    <Compile Include="ARM11\ARM\Instructions\ARM\LoadAndStore.cs" />
+    <Compile Include="ARM11\ARM\Instructions\ARM\LoadAndStore\Load.cs" />
+    <Compile Include="ARM11\ARM\Instructions\ARM\LoadAndStore\Store.cs" />
+    <Compile Include="ARM11\ARM\Instructions\ARM\Logical.cs" />
+    <Compile Include="ARM11\ARM\Instructions\ARM\Move.cs" />
+    <Compile Include="ARM11\ARM\Instructions\Thumb\Arithmetic.cs" />
+    <Compile Include="ARM11\ARM\Instructions\Thumb\Branch.cs" />
+    <Compile Include="ARM11\ARM\Instructions\Thumb\Compare.cs" />
+    <Compile Include="ARM11\ARM\Instructions\Thumb\Exception.cs" />
+    <Compile Include="ARM11\ARM\Instructions\Thumb\LoadAndStore.cs" />
+    <Compile Include="ARM11\ARM\Instructions\Thumb\Logical.cs" />
+    <Compile Include="ARM11\ARM\Instructions\Thumb\Move.cs" />
+    <Compile Include="ARM11\Bus.cs" />
+    <Compile Include="ARM11\Condition.cs" />
+    <Compile Include="ARM11\Coprocessor15.cs" />
+    <Compile Include="ARM11\Registers.cs" />
+    <Compile Include="ARM11\Utils.cs" />
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUARTOutput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUARTOutput.Designer.cs">
+      <DependentUpon>FrmUARTOutput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RPi\IO32.cs" />
+    <Compile Include="RPi\Memory.cs" />
+    <Compile Include="RPi\Peripherals\RPiDMA.cs" />
+    <Compile Include="RPi\Peripherals\RPiMiniUART.cs" />
+    <Compile Include="RPi\Peripherals\RPiTimer.cs" />
+    <Compile Include="RPi\Peripherals\RPiUART.cs" />
+    <Compile Include="RPi\RPiCore.cs" />
+    <Compile Include="RPi\VideoCore.cs" />
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUARTOutput.resx">
+      <DependentUpon>FrmUARTOutput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
